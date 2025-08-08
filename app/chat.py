@@ -37,7 +37,11 @@ async def chat(
 
     # 4. Build full message list for Groq
     messages = [
-        {"role": "system", "content": "You are a helpful assistant. Use the provided context when relevant."}
+        {
+  "role": "system",
+  "content": "You are a helpful assistant. Use the provided context to answer the user's question. If the answer is not in the context, say: I don't know based on the provided information. Do NOT use outside knowledge."
+}
+
     ]
     messages.extend(history_messages)
     messages.append({"role": "user", "content": f"Context:\n{context}\n\nQuestion: {message}"})
